@@ -1,5 +1,12 @@
 <?php
-
+function confirmQuery($result)
+{
+    global $connection;
+    if(!result){
+        die("Query failed".mysqli_error($result));
+    }
+    
+}
 
 
 function insert_categories(){
@@ -47,6 +54,15 @@ function deleteCategories(){
         $delete_category= mysqli_query($connection , $query);
         header("Location:categories.php");
     }  
+}
+
+function escape($string) {
+
+global $connection;
+
+return mysqli_real_escape_string($connection, trim($string));
+
+
 }
 
 ?>
