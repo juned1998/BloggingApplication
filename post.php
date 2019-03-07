@@ -79,7 +79,17 @@ $select_all_posts_query = mysqli_query($connection , $query);
                 die('QUERY FAILED' . mysqli_error($connection));
 
             }
+            
+            //Incrementing comment count on post
+$query = "UPDATE posts SET post_comment_count = post_comment_count + 1";
 
+$query.= " WHERE post_id=$the_post_id  ";
+            
+            $update_comment_count = mysqli_query($connection, $query);
+            if (!$update_comment_count) {
+                die('QUERY FAILED' . mysqli_error($connection));
+
+            }
 
         }
 
@@ -129,7 +139,8 @@ $select_comment_query = mysqli_query($connection,$query);
 if(!$select_comment_query) {
 
 die('Query Failed' . mysqli_error($connection));
-}
+}              
+                
 
 while($row = mysqli_fetch_assoc($select_comment_query)) {
 $comment_id          = $row['comment_id'];
