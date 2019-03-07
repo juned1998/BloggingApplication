@@ -27,7 +27,7 @@ $select_all_posts_query = mysqli_query($connection , $query);
                 $post_status = $row['post_status'];
                 
                 if($post_status !== 'published'){
-                 echo    "<h1> No Post Available</h1>";
+                 echo    "<h1 class='text-center'> No Post Available</h1>";
                 }
                 else{
                 
