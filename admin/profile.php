@@ -21,12 +21,82 @@ if(isset($_SESSION['username'])){
             $user_role     = $row['user_role'];
     
     }
+   
     
 }
+    
+?>
+
+<?php
+
+   if(isset($_POST['edit_user'])) {
+   
+            $user_firstname    = escape($_POST['user_firstname']);
+            $user_lastname     = escape($_POST['user_lastname']);
+            $user_role         = escape($_POST['user_role']);
+            $username          = escape($_POST['username']);
+            $user_email        = escape($_POST['user_email']);
+            $user_password     = escape($_POST['user_password']);
+    
+//            $post_image        = escape($_FILES['image']['name']);
+//            $post_image_temp   = escape($_FILES['image']['tmp_name']);
+    
+    
+            
+     //       $post_date         = escape(date('d-m-y'));
+
+       
+  //      move_uploaded_file($post_image_temp, "../images/$post_image" );
+       
+
+       
+       $query = "UPDATE users SET ";
+          $query .="user_firstname = '{$user_firstname}', ";
+          $query .="user_lastname = '{$user_lastname}', ";
+          $query .="user_role   =  '{$user_role}', ";
+          $query .="username = '{$username}', ";
+          $query .="user_email = '{$user_email}', ";
+          $query .="user_password   = '{$user_password}' ";
+          $query .= "WHERE username = '{$username}' ";
+        
+        $edit_user_query = mysqli_query($connection,$query);
+        
+        confirmQuery( $edit_user_query);
+       
+       
+       
+       
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- Navigation -->
  <?php include"includes/admin_navigation.php";?>
