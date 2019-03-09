@@ -26,16 +26,31 @@ $select_all_categories_query = mysqli_query($connection , $query);
                 ?>    
 
                     <li>
-                        <a href="admin">Admin.php</a>
+                        <a href="admin">Admin</a>
                     </li>
-<!--                    
+                
                     <li>
-                        <a href="#">Services</a>
+                      <?php
+                        
+                        
+                        if(isset($_SESSION['user_role'])){
+                            if(isset($_GET['p_id'])){
+                                $the_post_id = $_GET['p_id'];
+                                echo "<a href='admin/post.php?edit_post&p_id='{$the_post_id}''>Edit post</a>";
+                            }
+                        }
+                        
+                        ?>
+                        
+                        
+                        
+                    
+                    
+                    
+                    
                     </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
--->
+                    
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
