@@ -29,6 +29,8 @@ $query .= "VALUES('{$user_firstname}','{$user_lastname}','{$user_role}','{$usern
 $create_user_query = mysqli_query($connection, $query); 
 confirmQuery($create_user_query); 
 
+       echo "User created: "." "."<a href='users.php'>View Users</a>";
+       
    }
     
 
