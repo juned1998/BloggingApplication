@@ -31,7 +31,6 @@
     
     <!-- Include stylesheet -->
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<script src="js/quill-1.3.6/quill.js"> </script>
 
     
     
