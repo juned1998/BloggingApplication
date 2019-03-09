@@ -46,7 +46,6 @@ $select_all_posts_query = mysqli_query($connection , $query);
                     $post_image;?>" alt="">
                 <hr>
                 <p><?php echo $post_content; ?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
                 
@@ -159,7 +158,7 @@ $comment_date        = $row['comment_date'];
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><?php echo $comment_author; ?>
-                            <small<?php echo $comment_date ; ?></small>
+                            <small><?php echo $comment_date ; ?></small>
                         </h4>
                         <?php echo $comment_content ; ?> 
                     </div>
