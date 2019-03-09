@@ -28,7 +28,7 @@ $the_post_id = $_GET['p_id'];
             $post_title        = escape($_POST['title']);
             $post_author         = escape($_POST['author']);
             $post_category_id  = escape($_POST['post_category']);
-            $post_status       = escape($_POST['status']);
+            $post_status       = escape($_POST['post_status']);
     
             $post_image        = escape($_FILES['image']['name']);
             $post_image_temp   = escape($_FILES['image']['tmp_name']);
@@ -128,15 +128,18 @@ $the_post_id = $_GET['p_id'];
       
 
        <div class="form-group">
-<!--
+<label for="title">Post Status</label>
          <select name="post_status" id="">
-             <option value="draft">Post Status</option>
-             <option value="published">Published</option>
-             <option value="draft">Draft</option>
+             <option value='<?php echo $post_status;?>'><?php echo $post_status;?></option>
+             <?php
+             if($post_status == 'draft'){
+                echo "<option value='published'>Publish</option>";
+             }
+             else {
+                echo "<option value='draft'>Draft</option>";
+             }
+             ?>
          </select>
--->
-           <label for="title">Post Status</label>
-          <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="status">
       </div>
       
       
@@ -155,7 +158,7 @@ $the_post_id = $_GET['p_id'];
       
       <div class="form-group">
          <label for="post_content">Post Content</label>
-         <textarea  class="form-control "name="post_content" id="" cols="30" rows="10"><?php echo $post_content;?></textarea>
+         <textarea  class="form-control "name="post_content" id="editor" cols="30" rows="10"><?php echo $post_content;?></textarea>
       </div>
       
       
