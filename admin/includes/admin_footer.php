@@ -8,9 +8,9 @@
     <script src="js/bootstrap.min.js"></script>
     
 <!-- Include the Quill library -->
-<!--<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>-->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-<script src="../js/quill-1.3.6/quill.js"> </script>
+<!--<script src="js/quill-1.3.6/quill.js"> </script>-->
 
 <!-- Initialize Quill editor -->
 <script>
