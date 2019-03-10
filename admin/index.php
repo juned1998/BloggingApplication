@@ -1,5 +1,6 @@
 <?php include"includes/admin_header.php"; ?>
 
+
         <!-- Navigation -->
  <?php include"includes/admin_navigation.php";?>
 
@@ -14,7 +15,6 @@
                             Welcome to Admin 
                             <small><?php echo $_SESSION['username'];?></small>
                         </h1>
-                   
                     </div>
                 </div>
                 <!-- /.row -->
