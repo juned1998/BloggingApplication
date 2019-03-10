@@ -1,5 +1,5 @@
 <?php include"includes/admin_header.php"; ?>
-<?php include "functions.php";
+<?php// include "functions.php";
 ?>
 <?php
 //Using session for displaying user profile
