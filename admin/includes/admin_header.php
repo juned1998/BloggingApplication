@@ -1,4 +1,6 @@
 <?php include_once"../includes/db.php";?>
+<?php include"functions.php"; ?>
+
 <?php ob_start(); ?>
 <?php session_start();?>
 <?php
@@ -28,6 +30,8 @@
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
     
     <!-- Include stylesheet -->
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
