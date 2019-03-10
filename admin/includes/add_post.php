@@ -99,15 +99,13 @@
       
 
        <div class="form-group">
-<!--
+            <label for="title">Post Status</label>
          <select name="post_status" id="">
-             <option value="draft">Post Status</option>
-             <option value="published">Published</option>
+             <option value="draft">Select status</option>
+             <option value="published">Publish</option>
              <option value="draft">Draft</option>
          </select>
--->
-           <label for="title">Post Status</label>
-          <input type="text" class="form-control" name="post_status">
+          
       </div>
       
       
