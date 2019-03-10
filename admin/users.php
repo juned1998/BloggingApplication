@@ -1,5 +1,5 @@
 <?php include"includes/admin_header.php"; ?>
-<?php include "functions.php"; ?>
+<?php// include "functions.php"; ?>
 
         <!-- Navigation -->
  <?php include"includes/admin_navigation.php";?>
