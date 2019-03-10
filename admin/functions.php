@@ -3,11 +3,11 @@
 function users_online(){
     
     if(isset($_GET['onlineusers'])){
-    global $connection;
+        global $connection;
 
             if(!$connection){
             session_start();
-            include("../include/db.php");
+            include("../includes/db.php");
 
             $session = session_id();
             $time = time();
