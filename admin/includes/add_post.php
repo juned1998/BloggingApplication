@@ -51,8 +51,8 @@
           <input  type="text" class="form-control" name="title">
       </div>
 
-              <div class="form-group">
-       <label for="categories">Categories</label>
+        <div class="form-group">
+       <label for="post_category">Categories</label>
        <select name="post_category" id="">
            
       <?php
@@ -91,10 +91,15 @@
 
       </div>
 
+                
        <div class="form-group">
-         <label for="title">Post Author</label>
-          <input  type="text" class="form-control" name="post_author">
+         <label for="post_author">Post Author</label>
+   <input name = "post_author" class="form-control" >
       </div> 
+
+        
+        
+        
       
       
 
