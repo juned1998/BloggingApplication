@@ -11,7 +11,7 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
               <?php
-                    $per_page = 2;
+                    $per_page = 5;
                 
                   if(isset($_GET['page'])){
                       $page = $_GET['page'];
@@ -31,17 +31,34 @@
                         $page_1 = ($page * $per_page) - $per_page ;
                         
                     }
+
+                     if(isset($_SESSION['user_role']) && $_SESSION['user_role']=='admin'){
+
+                    $post_count_query = "SELECT * FROM posts ";
+                }
+
+
+                else{
+                   $post_count_query = "SELECT * FROM posts WHERE post_status = 'published'";
+                }
                 
                 
-                
-                
-                $post_count_query = "SELECT * FROM posts";
                 $find_count = mysqli_query($connection ,$post_count_query);
                 $count      = mysqli_num_rows($find_count);
+
+
+                if($count < 1){
+
+                    echo "<h1>No Post Available</h1>";
+                }else{
+
+
+
+
                 $count      = ceil($count/$per_page);
                
                 
-                    $query = "SELECT * from posts LIMIT $page_1,5";
+                    $query = "SELECT * from posts LIMIT $page_1,$per_page  ";
 $select_all_posts_query = mysqli_query($connection , $query);
             while($row = mysqli_fetch_assoc($select_all_posts_query))
             {
@@ -53,7 +70,7 @@ $select_all_posts_query = mysqli_query($connection , $query);
                  $post_content = substr($row['post_content'],0,100);
                 $post_status = $row['post_status'];
                 
-                if($post_status == 'published'){
+           
                 
                 ?>    
 
@@ -84,7 +101,9 @@ $select_all_posts_query = mysqli_query($connection , $query);
 
                 <hr>
                 
-            <?php    } }?>
+            <?php     } 
+
+        }?>
               
 
 

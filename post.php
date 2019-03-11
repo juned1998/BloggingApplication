@@ -14,16 +14,34 @@
                 
                 
                  if($_GET['p_id']){
-                    $the_post_id = $_GET['p_id'];
-$view_query = "UPDATE posts SET post_views_count = post_views_count +1 WHERE post_id = '{$the_post_id}'" ;
-$send_query = mysqli_query($connection , $view_query);
-if(!$send_query){
-    die("QUERY FAILED".mysqli_error($connection));
-}                     
+                $the_post_id = $_GET['p_id'];
+                $view_query = "UPDATE posts SET post_views_count = post_views_count +1 WHERE post_id = '{$the_post_id}'" ;
+                $send_query = mysqli_query($connection , $view_query);
+                if(!$send_query){
+                die("QUERY FAILED".mysqli_error($connection));
+                }   
+
+                                  
                     
-               
-                $query = "SELECT * FROM posts WHERE post_id ={$the_post_id}";
-$select_all_posts_query = mysqli_query($connection , $query);
+                if(isset($_SESSION['user_role']) && $_SESSION['user_role']=='admin'){
+                    $query = "SELECT * FROM posts WHERE post_id ={$the_post_id}";
+                }else{
+                    $query = "SELECT * FROM posts WHERE post_id ={$the_post_id}
+                              AND post_status = 'published'";
+                }
+
+
+
+            $select_all_posts_query = mysqli_query($connection , $query);
+
+            if(mysqli_num_rows($select_all_posts_query) < 1){
+
+    echo "<h1>No Post Available</h1>";
+
+
+}else{
+
+
             while($row = mysqli_fetch_assoc($select_all_posts_query))
             {
                 $post_title = $row['post_title'];
@@ -34,7 +52,7 @@ $select_all_posts_query = mysqli_query($connection , $query);
                 ?>    
 
                 <h1 class="page-header">
-                    Page Heading
+                    Post
                     <small>Secondary Text</small>
                 </h1>
 
@@ -54,13 +72,11 @@ $select_all_posts_query = mysqli_query($connection , $query);
 
                 <hr>
                 
-            <?php    }  
+            <?php    } ?> 
                  
                  
                  
-        }else{
-                     header("Location:index.php");
-                 }?>
+        
                 
                 
                 
@@ -178,7 +194,9 @@ $comment_date        = $row['comment_date'];
                 </div>
 
                 
-<?php }?>                
+<?php }}  }else{
+                     header("Location:index.php");
+                 }?>                
                 
               
 
