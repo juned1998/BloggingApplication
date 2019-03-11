@@ -22,7 +22,7 @@ if(isset($_GET['edit_user'])){
     }
     
     
-}
+
    
 
    if(isset($_POST['edit_user'])) {
@@ -44,21 +44,21 @@ if(isset($_GET['edit_user'])){
        
   //      move_uploaded_file($post_image_temp, "../images/$post_image" );
        
-        $query = "SELECT randSalt from users";
-        $select_randsalt_query = mysqli_query($connection , $query);
-        if(!$select_randsalt_query){
-        die("QUERY FAILED".mysqli_error($connection));
-        }
-       
-        $row = mysqli_fetch_array($select_randsalt_query);
 
-        $salt = $row['randSalt'];
         
-        $hashed_password = crypt($user_password , $salt);
        
-
-       
-       $query = "UPDATE users SET ";
+       if(!empty($user_password)){
+           $query_password = "SELECT user_password FROM users WHERE user_id = $the_user_id ";
+           $get_user_query = mysqli_query($connection,$query_password);
+           confirmQuery($get_user_query);
+           $row = mysqli_fetch_array($get_user_query);
+           $db_user_password =$row['user_password'];
+           
+            if($db_user_password != $user_password){
+            $hashed_password = password_hash($user_password , PASSWORD_BCRYPT , array('cost'=>10));
+            }
+           
+          $query = "UPDATE users SET ";
           $query .="user_firstname = '{$user_firstname}', ";
           $query .="user_lastname = '{$user_lastname}', ";
           $query .="user_role   =  '{$user_role}', ";
@@ -70,14 +70,25 @@ if(isset($_GET['edit_user'])){
         $edit_user_query = mysqli_query($connection,$query);
         
         confirmQuery( $edit_user_query);
+           
+        echo "<p>User updated : <a href='users.php?source=view_all_users'>view users</a></p>";
+   
+           
+       }
+
+      
        
-       echo "<p>User updated : <a href='users.php?source=view_all_users'>view users</a></p>";
+
+       
        
        
        
        
 
    }
+}else{
+    header("Location:index.php");
+}
     
 
     
@@ -138,7 +149,7 @@ if(isset($_GET['edit_user'])){
       
       <div class="form-group">
          <label for="user_password">Password</label>
-          <input value="<?php echo $user_password; ?>" type="password" class="form-control" name="user_password">
+          <input autocomplete="off" type="password" class="form-control" name="user_password">
       </div>
       
       
