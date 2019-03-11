@@ -83,24 +83,48 @@
 <?php
 ///UPDATING COMMENT STATUS
      if(isset($_GET['admin'])){
+        if(isset($_SESSION['user_role'])){
+            
+            if($_SESSION['user_role'] == 'admin'){           
+         
         $the_user_id = $_GET['admin'];
         $query = "UPDATE users SET user_role = 'admin' WHERE user_id = $the_user_id";
         $change_to_admin_query = mysqli_query($connection , $query);
         header("Location:users.php");
+            }
+        }
+         
     }
 
+
     if(isset($_GET['subscriber'])){
+        if(isset($_SESSION['user_role'])){
+            
+            if($_SESSION['user_role'] == 'admin'){        
+        
         $the_user_id = $_GET['subscriber'];
         $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = $the_user_id";
         $change_to_subscriber_query = mysqli_query($connection , $query);
         header("Location:users.php");
+        
+            }
+        }
+    
     }
 
+
     if(isset($_GET['delete'])){
-        $the_user_id = $_GET['delete'];
-        $query = "DELETE FROM users WHERE user_id = {$the_user_id}";
-        $delete_query = mysqli_query($connection , $query);
-        header("Location:users.php");
+        if(isset($_SESSION['user_role'])){
+            
+            if($_SESSION['user_role'] == 'admin'){
+                
+            $the_user_id = $_GET['delete'];
+            $query = "DELETE FROM users WHERE user_id = {$the_user_id}";
+            $delete_query = mysqli_query($connection , $query);
+            header("Location:users.php");
+        
+            }
+        }
     }
 
 ?>
