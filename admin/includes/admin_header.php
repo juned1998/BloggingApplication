@@ -36,6 +36,8 @@
     <!-- Include stylesheet -->
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+
+
     
     
 
@@ -50,6 +52,7 @@
     <![endif]-->
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script src="js/jquery.js"></script>
     
 </head>
 
