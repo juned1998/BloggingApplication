@@ -27,6 +27,7 @@ $select_all_categories_query = mysqli_query($connection , $query);
 
                     <li><a href="admin">Admin</a></li>
                     <li><a href="registration.php">Registration</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 
                    
     <?php 
