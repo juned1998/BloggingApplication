@@ -10,6 +10,7 @@
             $username          = escape($_POST['username']);
             $user_email        = escape($_POST['user_email']);
             $user_password     = escape($_POST['user_password']);
+       $user_password = password_hash($user_password , PASSWORD_BCRYPT , array('cost'=>10));
     
 //            $post_image        = escape($_FILES['image']['name']);
 //            $post_image_temp   = escape($_FILES['image']['tmp_name']);
