@@ -21,22 +21,31 @@
      
 <!-- Login form -->
     <div class="well">
-        <h4>Login</h4>
+        <?php if(isset($_SESSION['user_role'])): ?>
+            <h4> Logged in as <?php echo $_SESSION['username']; ?></h4>
+            <a href="includes/logout.php" class="btn btn-primary">Log out</a>
+        <?php else: ?>
+            <h4>Login</h4>
         <form action="includes/login.php" method="post">
-        <div class="form-group">
-            <input placeholder="Enter Username" name="username" type="text" class="form-control">   
-        </div>
-            
-        <div class="input-group">
-            <input placeholder="Enter Password" name="password" type="password" class="form-control">
+            <div class="form-group">
+                <input placeholder="Enter Username" name="username" type="text" class="form-control">   
+            </div>
+
+            <div class="input-group">
+                <input placeholder="Enter Password" name="password" type="password" class="form-control">
             <span class="input-group-btn">
                 <button class="btn btn-primary" name="login" type="submit">
                     Submit
                 </button>
             </span>
-            
-        </div>    
+
+            </div>    
         </form><!--form end-->    
+
+        <?php endif;?>    
+
+        
+      
         <!-- /.input-group -->
     </div>
 
