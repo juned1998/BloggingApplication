@@ -1,5 +1,11 @@
 <?php include"includes/admin_header.php"; ?>
-<?php// include "functions.php"; ?>
+<?php
+        if(!is_admin($_SESSION['username'])){
+            header("Location:index.php");
+        }
+    
+
+?>
 
         <!-- Navigation -->
  <?php include"includes/admin_navigation.php";?>
