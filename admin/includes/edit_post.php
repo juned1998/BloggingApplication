@@ -160,7 +160,7 @@ $the_post_id = $_GET['p_id'];
       
       <div class="form-group">
          <label for="post_content">Post Content</label>
-         <textarea  class="form-control "name="post_content" id="editor" cols="30" rows="10"><?php echo $post_content;?></textarea>
+         <textarea  class="form-control "name="post_content" id="editor" cols="30" rows="10"><?php echo /*str_replace('\r\n', '</br>', */$post_content/*)*/ ;?></textarea>
       </div>
       
       
