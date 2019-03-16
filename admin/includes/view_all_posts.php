@@ -252,17 +252,21 @@ echo "<td><a href='posts.php?reset={$post_id}'>$post_views_count</a></td>";
 
 <?php
     if(isset($_GET['delete'])){
+      if(is_admin($_SESSION['username'])){
         $the_post_id = $_GET['delete'];
         $query = "DELETE FROM posts WHERE post_id = {$the_post_id}";
         $delete_query = mysqli_query($connection , $query);
         header("Location:posts.php");
+      }
     }
     
   if(isset($_GET['reset'])){
+    if(is_admin($_SESSION['username'])){
         $the_post_id = $_GET['reset'];
         $query = "UPDATE posts SET post_views_count = 0 WHERE post_id =".mysqli_real_escape_string($connection,$the_post_id)." ";
         $reset_query = mysqli_query($connection , $query);
         header("Location:posts.php");
+      }
     }
 
 ?>
