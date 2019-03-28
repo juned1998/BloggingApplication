@@ -26,7 +26,6 @@ $the_post_id = $_GET['p_id'];
     
         if(isset($_POST['update_post'])){
             $post_title        = escape($_POST['title']);
-            $post_author         = escape($_POST['author']);
             $post_category_id  = escape($_POST['post_category']);
             $post_status       = escape($_POST['post_status']);
     
@@ -55,7 +54,6 @@ $the_post_id = $_GET['p_id'];
           $query .="post_title  = '{$post_title}', ";
           $query .="post_category_id = '{$post_category_id}', ";
           $query .="post_date   =  now(), ";
-          $query .="post_author = '{$post_author}', ";
           $query .="post_status = '{$post_status}', ";
           $query .="post_tags   = '{$post_tags}', ";
           $query .="post_content= '{$post_content}', ";
@@ -124,7 +122,9 @@ $the_post_id = $_GET['p_id'];
 
        <div class="form-group">
          <label for="title">Post Author</label>
-          <input value="<?php echo $post_author; ?>" type="text" class="form-control" name="author">
+
+          <input value="<?php echo $post_author; ?>" type="text" class="form-control" name="author" disabled
+          >
       </div> 
       
       
