@@ -5,7 +5,8 @@
    if(isset($_POST['create_post'])) {
    
             $post_title        = escape($_POST['title']);
-            $post_author         = escape($_POST['post_author']);
+            $post_author       = escape($_SESSION['username']);
+            $post_user_id      = loggedInUserId();   
             $post_category_id  = escape($_POST['post_category']);
             $post_status       = escape($_POST['post_status']);
     
@@ -21,9 +22,9 @@
         move_uploaded_file($post_image_temp, "../images/$post_image" );
        
        
-      $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags,post_status) ";
+      $query = "INSERT INTO posts(post_category_id, post_title, post_author,user_id, post_date,post_image,post_content,post_tags,post_status) ";
              
-      $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') "; 
+      $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}','{$post_user_id}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') "; 
              
       $create_post_query = mysqli_query($connection, $query);  
           
@@ -94,7 +95,7 @@
                 
        <div class="form-group">
          <label for="post_author">Post Author</label>
-   <input name = "post_author" class="form-control" >
+   <input name = "post_author" class="form-control" placeholder="<?php echo $_SESSION['username']?>" disabled="" >
       </div> 
 
         
