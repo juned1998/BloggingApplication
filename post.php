@@ -111,11 +111,11 @@
 
 //$query.= " WHERE post_id=$the_post_id  ";
             
-            $update_comment_count = mysqli_query($connection, $query);
-            if (!$update_comment_count) {
-                die('QUERY FAILED' . mysqli_error($connection));
+            // $update_comment_count = mysqli_query($connection, $query);
+            // if (!$update_comment_count) {
+            //     die('QUERY FAILED' . mysqli_error($connection));
 
-            }
+            // }
 
         }else{
           echo "<script>alert('comment fields cannot be empty')</script>";
