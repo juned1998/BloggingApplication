@@ -173,6 +173,9 @@ confirmQuery($update_to_delete_status);
                     <tr>
                     <?php 
         $query = "SELECT * from posts";
+        if(!is_admin()){
+           $query = "SELECT * from posts WHERE user_id=".loggedInUserId()."";
+        }
         $select_posts= mysqli_query($connection , $query);
 
         while($row = mysqli_fetch_assoc($select_posts))
