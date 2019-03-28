@@ -8,42 +8,42 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/cms">Start Bootstrap</a>
+                <a class="navbar-brand" href="/cms">CMS</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav ">
                     
                 <?php
-                    $query = "SELECT * from categories";
-$select_all_categories_query = mysqli_query($connection , $query);
-            while($row = mysqli_fetch_assoc($select_all_categories_query))
-            {
-                $cat_title = $row['cat_title'];
-                $cat_id    = $row['cat_id'];
+//                     $query = "SELECT * from categories";
+// $select_all_categories_query = mysqli_query($connection , $query);
+//             while($row = mysqli_fetch_assoc($select_all_categories_query))
+//             {
+//                 $cat_title = $row['cat_title'];
+//                 $cat_id    = $row['cat_id'];
 
-                $category_class = '';
+//                 $category_class = '';
 
-                $registration_class = '';
-                $registration = 'registration.php';
+//                 $registration_class = '';
+//                 $registration = 'registration.php';
 
-                $contact = 'contact.php';
-                $contact_class = '';
+//                 $contact = 'contact.php';
+//                 $contact_class = '';
 
-                $pageName = basename($_SERVER['PHP_SELF']);
+//                 $pageName = basename($_SERVER['PHP_SELF']);
 
-                if(isset($_GET['category']) && $_GET['category'] == $cat_id){
-                    $category_class = 'active';
-                }else if($pageName == $registration){
-                     $registration_class = 'active';
-                }else if($pageName == $contact){
-                     $contact_class = 'active';
-                }
+//                 if(isset($_GET['category']) && $_GET['category'] == $cat_id){
+//                     $category_class = 'active';
+//                 }else if($pageName == $registration){
+//                      $registration_class = 'active';
+//                 }else if($pageName == $contact){
+//                      $contact_class = 'active';
+//                 }
 
 
 
-                echo"<li class='$category_class'><a href='category.php?category={$cat_id}'>{$cat_title}</a></li>";
-            }
+//                 echo"<li class='$category_class'><a href='category.php?category={$cat_id}'>{$cat_title}</a></li>";
+//             }
                     
                 ?>    
 
