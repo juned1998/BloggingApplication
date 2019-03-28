@@ -18,6 +18,11 @@
           <?php 
     
     $query = "SELECT * FROM comments";
+    if(!is_admin()){
+      $query = "SELECT * FROM posts
+    INNER JOIN comments ON posts.post_id = comments.comment_post_id
+    WHERE user_id=".loggedInUserId()."";
+    }
 
     $select_comments = mysqli_query($connection,$query);
 
